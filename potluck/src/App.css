@@ -20,3 +20,28 @@
 .App-link {
   color: #09d3ac;
 }
+
+input,
+textarea {
+  margin-top: 32px;
+  padding: 0.5rem;
+  font-size: 16px;
+  width: 100%;
+  display: block;
+  color: black;
+  border: 2px solid blueviolet;
+}
+
+.links {
+  background-color: green;
+  color: gold;
+  padding: 2% 4%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register {
+  font-size:1rem;
+}
