@@ -61,7 +61,7 @@ const FormikRegister = withFormik({
   handleSubmit(values, { setStatus }) {
     // values is our object with all our data on it
     axios
-      .post("https://reqres.in/api/users/", values)
+      .post("https://potluck-planner-backend.herokuapp.com/api/register", values)
       .then(res => {
         setStatus(res.data);
         console.log(res);
