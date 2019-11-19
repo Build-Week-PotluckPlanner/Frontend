@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <NavBar/>
       <header className="App-header">
-    <Route path="/" exact component={FormikLogin} />
+      <Route path="/" exact component={FormikLogin} />
       </header>
     </div>
   );
