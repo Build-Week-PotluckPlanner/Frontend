@@ -45,3 +45,17 @@ textarea {
 .register {
   font-size:1rem;
 }
+
+
+
+.checkbox-container {
+  display: flex;
+  align-items: baseline;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+

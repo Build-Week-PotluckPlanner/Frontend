@@ -7,14 +7,14 @@ import {Link} from "react-router-dom"
 
 
 const StyledForm = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: space-evenly;
+display: flex
+flex-direction: column
+align-items: center
+justify-content: space-evenly
 `;
 
 const Button = styled.button`
-width: 100px;
+width: 100px
 height: 25px
 border-radius: 10px
 margin: 2%`;
