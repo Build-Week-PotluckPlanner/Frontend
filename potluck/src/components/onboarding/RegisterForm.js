@@ -15,18 +15,21 @@ const Register = ({ errors, touched, status}) => {
       <Form>
         <h1>Registration Form</h1>
         <br></br>
-        <Field type="text" name="name" placeholder="Name" />
+        <Field type="text" name="firstName" placeholder="First Name" />
         {touched.name && errors.name && <p className="errors">{errors.name}</p>}
         <br></br>
-        <Field type="email" name="email" placeholder="Email" />
-        {touched.email && errors.email && <p className="errors">{errors.email}</p>}
+        <Field type="text" name="lastName" placeholder="Last Name" />
+        {touched.name && errors.name && <p className="errors">{errors.name}</p>}
+        <br></br>
+        <Field type="text" name="username" placeholder="Username" />
+        {touched.name && errors.name && <p className="errors">{errors.name}</p>}
         <br></br>
         <Field type="password" name="password" placeholder="Password" />
         {touched.password && errors.password && <p className="errors">{errors.password}</p>}
         <br></br>
         
         
-        <button>Submit!</button>
+        <button>Submit</button>
       </Form>
 
      
@@ -35,8 +38,8 @@ const Register = ({ errors, touched, status}) => {
       {users.map(user => (
             
             <ul key="{user.id}">
-              <li>Name: {user.name}</li>
-              <li>Email: {user.email}</li>
+              <li>Name: {user.firstName}</li>
+              <li>Username: {user.username}</li>
               
             </ul>
           ))}
@@ -46,20 +49,21 @@ const Register = ({ errors, touched, status}) => {
 
 
 const FormikRegister = withFormik({
-  mapPropsToValues({ name, email, password }) {
+  mapPropsToValues({ firstName, lastName,username, password }) {
     return {
-      name: name || "",
-      email: email || "",
+      name: firstName || "",
+      name: lastName || "",
+      name: username || "",
       password: password || "",
     };
   },
   validationSchema: Yup.object().shape({
-    name: Yup.string().required(),
-    email: Yup.string().required(),
+    firstName: Yup.string().required(),
+    lastName: Yup.string().required(),
+    username: Yup.string().required(),
     password: Yup.string().required()
   }),
   handleSubmit(values, { setStatus }) {
-    // values is our object with all our data on it
     axios
       .post("https://potluck-planner-backend.herokuapp.com/api/register", values)
       .then(res => {
