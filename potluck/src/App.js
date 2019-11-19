@@ -1,13 +1,22 @@
 import React from 'react';
-//import logo from './logo.svg';
 import './App.css';
-import RegisterForm from './components/onboarding/RegisterForm';
+import FormikLogin from './components/onboarding/LoginForm';
+import {Route} from "react-router-dom"
+import NavBar from "./components/onboarding/Nav"
 
+import RegisterForm from './components/onboarding/RegisterForm';
 
 function App() {
   return (
     <div className="App">
+
+      <NavBar/>
+      <header className="App-header">
+      <Route path="/" exact component={FormikLogin} />
+      </header>
+
       <RegisterForm/>
+
     </div>
   );
 }
