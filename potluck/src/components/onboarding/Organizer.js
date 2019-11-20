@@ -39,7 +39,7 @@ const Organizer = ({ values, errors, touched, status }) => {
           />
           <span className="checkmark" />
         </label>
-        <Field as="textarea" type="text" name="notes" placeholder="notes" />
+        <Field as="textarea" type="text" name="notes" placeholder="what will be brought" />
         <button>Submit!</button>
       </Form>
       {person.map(person => (
@@ -48,18 +48,21 @@ const Organizer = ({ values, errors, touched, status }) => {
           <li>Date: {person.date}</li>
           <li>Time: {person.time}</li>
           <li>Location: {person.location}</li>
+          <li>Item: {person.item}</li>
+          <li>Brings: {person.notes}</li>
         </ul>
       ))}
     </div>
   );
 };
 const FormikOraginzer = withFormik({
-  mapPropsToValues({ name, date, time, location, rsvp, notes }) {
+  mapPropsToValues({ name, date, time, location, item, rsvp, notes }) {
     return {
       name: name || "",
       date: date || "",
       time: time || "",
-      location: location || "",
+      location: "",
+      item: item || "",
       rsvp: rsvp || false,
       notes: notes || ""
     };
