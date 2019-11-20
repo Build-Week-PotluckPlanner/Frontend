@@ -92,7 +92,6 @@ const FormikLogin = withFormik({
             props.props.history.push('/dashboard');
             // console.log('Here', res.data);
         //   setStatus(res.data);
-        
         })
         
         .catch(err => console.log(err.response));

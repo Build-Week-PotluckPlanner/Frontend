@@ -23,7 +23,8 @@ function App() {
 
       <NavBar/>
       {/* <header className="App-header"> */}
-      <Route path="/" exact component={FormikLogin} />
+      <PrivateRoute path="/" exact component={FormikLogin} />
+      {/* <PrivateRoute path='/dashboard' component={DashBoard} */}
       <Route path='/LoginForm' component={LoginForm} />
       <Route path='/RegisterForm' component={RegisterForm} />
       {/* </header> */}

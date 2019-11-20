@@ -65,11 +65,11 @@ const Register = ({ errors, touched, status}) => {
 
 
 const FormikRegister = withFormik({
-  mapPropsToValues({ firstName, lastName,username, password }) {
+  mapPropsToValues({ firstName, lastName, username, password }) {
     return {
-      name: firstName || "",
-      name: lastName || "",
-      name: username || "",
+      firstName: firstName || "",
+      lastName: lastName || "",
+      username: username || "",
       password: password || "",
     };
   },
@@ -88,7 +88,7 @@ const FormikRegister = withFormik({
             console.log('Here', res.data);
             localStorage.setItem('token', res.data.token)
             // console.log(props.props.history);
-            props.props.history.push('/login')
+            props.props.history.push('/loginform')
             // setStatus(res.data);
       })
       .catch(err => console.log(err.response));
