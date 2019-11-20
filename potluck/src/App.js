@@ -3,7 +3,7 @@ import './App.css';
 import FormikLogin from './components/onboarding/LoginForm';
 import {Route} from "react-router-dom"
 import NavBar from "./components/onboarding/Nav"
-import FormikOraginzer from './components/onboarding/Organizer';
+import FormikOrganizer from './components/onboarding/Organizer';
 import FormikRegister from './components/onboarding/RegisterForm';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
 
       <NavBar/>
       <header className="App-header">
-      <Route path="/" exact component={FormikOraginzer}/>
+      <Route path="/" exact component={FormikOrganizer}/>
       <Route path="/LoginForm" exact component={FormikLogin} />
       <Route path="/RegisterForm" exact component={FormikRegister} />
       </header>
