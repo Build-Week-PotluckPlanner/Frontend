@@ -7,14 +7,14 @@ import {Link} from "react-router-dom"
 
 
 const StyledForm = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: space-evenly;
+display: flex
+flex-direction: column
+align-items: center
+justify-content: space-evenly
 `;
 
 const Button = styled.button`
-width: 100px;
+width: 100px
 height: 25px
 border-radius: 10px
 margin: 2%`;
@@ -85,9 +85,12 @@ const FormikLogin = withFormik({
     }),
     handleSubmit(values, { setStatus }) {
         axios
-            .post("https://reqres.in/api/users/", values)
+            .post("https://potluck-planner-backend.herokuapp.com/api/login", values)
             .then(response => {
                 console.log(response);
+                const token = response.data.token;
+                localStorage.setItem("token", token)
+                values.history.push("/dashboard")
                 setStatus(response.data);
             })
             .catch(error => console.log(error.response));
