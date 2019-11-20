@@ -1,23 +1,23 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect} from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import styled from "styled-components"
-import {Link} from "react-router-dom"
-
+import styled from "styled-components";
+import {BrowserRouter as Router, Link} from "react-router-dom";
+import { render } from 'react-dom';
 
 const StyledForm = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: space-evenly;
-`;
+`
 
 const Button = styled.button`
 width: 100px;
-height: 25px
-border-radius: 10px
-margin: 2%`;
+height: 25px;
+border-radius: 10px;
+margin: 2%;`
 
 
 
@@ -83,18 +83,24 @@ const FormikLogin = withFormik({
         name: Yup.string().required("Required field."),
         pw: Yup.string().required("Required field."),
     }),
-    handleSubmit(values, { setStatus }) {
-        axios
-            .post("https://reqres.in/api/users/", values)
-            .then(response => {
-                console.log(response);
-                setStatus(response.data);
-            })
-            .catch(error => console.log(error.response));
+
+    handleSubmit(values, props) {
+        axios.post("https://lambda-practice-db.herokuapp.com/api/auth/login", values)
+          .then(res => {
+            localStorage.setItem('token', res.data.token);
+            // console.log(props);
+            props.props.history.push('/dashboard');
+            // console.log('Here', res.data);
+        //   setStatus(res.data);
+        
+        })
+        
+        .catch(err => console.log(err.response));
     }
+//   handleSubmit(values, {resetForm, setErrors, setSubmitting}) {
+//   }
 })(Login);
 
-
-
-
 export default FormikLogin
+
+render(<Router><FormikLogin /></Router>, document.getElementById('root') )

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import {BrowserRouter as Router, Link} from "react-router-dom";
+import { render } from 'react-dom';
 
 const Register = ({ errors, touched, status}) => {
   const [users, setUsers] = useState([]);
@@ -58,13 +60,17 @@ const FormikRegister = withFormik({
     email: Yup.string().required(),
     password: Yup.string().required()
   }),
-  handleSubmit(values, { setStatus }) {
+  
+  handleSubmit(values, props) {
     // values is our object with all our data on it
     axios
       .post("https://potluck-planner-backend.herokuapp.com/api/register", values)
       .then(res => {
-        setStatus(res.data);
-        console.log(res);
+            console.log('Here', res.data);
+            localStorage.setItem('token', res.data.token)
+            // console.log(props.props.history);
+            props.props.history.push('/login')
+            // setStatus(res.data);
       })
       .catch(err => console.log(err.response));
   }
@@ -73,4 +79,4 @@ const FormikRegister = withFormik({
 
 export default FormikRegister;
 
-
+render(<Router><FormikRegister /></Router>, document.getElementById('root') )
