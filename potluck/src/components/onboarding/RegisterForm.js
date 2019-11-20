@@ -2,6 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import styled from "styled-components"
+import {Link} from "react-router-dom"
+
+const StyledForm = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-evenly;
+`;
+
+const Button = styled.button`
+width: 100px;
+height: 25px
+border-radius: 10px
+margin: 2%`;
 
 const Register = ({ errors, touched, status}) => {
   const [users, setUsers] = useState([]);
@@ -27,19 +42,20 @@ const Register = ({ errors, touched, status}) => {
         <Field type="password" name="password" placeholder="Password" />
         {touched.password && errors.password && <p className="errors">{errors.password}</p>}
         <br></br>
+        <Link className="login" to = "./LoginForm">Login</Link>
+        <br></br>
+        <Button type="submit">Register</Button>
         
-        
-        <button>Submit</button>
       </Form>
 
-     
-       
-      {/* This is where we display our post request */}
+      
       {users.map(user => (
             
             <ul key="{user.id}">
-              <li>Name: {user.firstName}</li>
+              <li>First Name: {user.firstName}</li>
+              <li>Last Name: {user.lastName}</li>
               <li>Username: {user.username}</li>
+              <li>Password: {user.password}</li>
               
             </ul>
           ))}
@@ -65,7 +81,7 @@ const FormikRegister = withFormik({
   }),
   handleSubmit(values, { setStatus }) {
     axios
-      .post("https://potluck-planner-backend.herokuapp.com/api/register", values)
+      .post("https://reqres.in/api/users/", values)
       .then(res => {
         setStatus(res.data);
         console.log(res);
