@@ -12,7 +12,7 @@ background: lightyellow;
 const Navigation = styled.div`
 display:flex;
 justify-content: space-evenly;
-width: 25%;
+width: 45%;
 align-items: center;
 text-decoration: none;`;
 

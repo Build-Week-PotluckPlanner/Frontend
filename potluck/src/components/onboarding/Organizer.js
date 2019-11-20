@@ -5,10 +5,12 @@ import axios from "axios";
 
 const Organizer = ({ values, errors, touched, status }) => {
   const [person, setPerson] = useState([]);
-    useEffect(() => {status && setPerson(person => [...person, status]);
-    }, [status]);​
 
-    return (
+  useEffect(() => {
+    status && setPerson(person => [...person, status]);
+  }, [status]);
+
+  return (
     <div className="person-form">
         <h1>Create PotLuck</h1>
       <Form>

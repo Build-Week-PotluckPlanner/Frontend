@@ -54,7 +54,7 @@ const Login = ({values, errors, touched, status}) => {
                     <Field type="text" name="password" placeholder="insert password"/>
                     {touched.pw && errors.pw && (<p className="error">{errors.pw}</p>)}
                     </label>
-                    <Link className="register" to = "/RegisterForm">Register</Link>
+                    <Link className="register" to = "./RegisterForm">Register</Link>
                     <Button type="submit">Login</Button>        
                 </StyledForm>
             </Form>

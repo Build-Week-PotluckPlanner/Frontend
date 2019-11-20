@@ -2,18 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import {BrowserRouter as Router, Link} from "react-router-dom";
 import { render } from 'react-dom';
 import styled from "styled-components";
+import { BrowserRouter as Router, Link } from 'react-router-dom'; 
 
 const StyledForm = styled.div`
 display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: space-evenly;
-`;
-
-const Button = styled.button`
 width: 100px;
 height: 25px;
 border-radius: 10px;
@@ -45,7 +39,7 @@ const Register = ({ errors, touched, status}) => {
         <br></br>
         <Link className="login" to = "./LoginForm">Login</Link>
         <br></br>
-        <Button type="submit">Register</Button>
+        <button type="submit">Register</button>
         
       </Form>
 
