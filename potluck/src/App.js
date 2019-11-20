@@ -24,8 +24,8 @@ function App() {
       <NavBar/>
       {/* <header className="App-header"> */}
       <Route path="/" exact component={FormikLogin} />
-      <Route path='/login' component={LoginForm} />
-      <Route path='/register' component={RegisterForm} />
+      <Route path='/LoginForm' component={LoginForm} />
+      <Route path='/RegisterForm' component={RegisterForm} />
       {/* </header> */}
 
 

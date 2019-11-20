@@ -47,11 +47,11 @@ const Login = ({values, errors, touched, status}) => {
             <Form>
                 <StyledForm>
                     <label className="userinfo">Username
-                    <Field type="text" name="name" placeholder="insert username"/>
+                    <Field type="text" name="username" placeholder="insert username"/>
                     {touched.name && errors.name && (<p className="error">{errors.name}</p>)}
                     </label>
                     <label className="userinfo">Password
-                    <Field type="text" name="pw" placeholder="insert password"/>
+                    <Field type="text" name="password" placeholder="insert password"/>
                     {touched.pw && errors.pw && (<p className="error">{errors.pw}</p>)}
                     </label>
                     <Link className="register" to = "/RegisterForm">Register</Link>
@@ -61,8 +61,8 @@ const Login = ({values, errors, touched, status}) => {
 
             {user.map(person => (
                 <ul key={person.id}>
-                    <li>Name: {person.name}</li>
-                    <li>Password: {person.pw}</li>
+                    <li>Username: {person.username}</li>
+                    <li>Password: {person.password}</li>
                 </ul>
             ))}
 
@@ -73,19 +73,19 @@ const Login = ({values, errors, touched, status}) => {
 }
 
 const FormikLogin = withFormik({
-    mapPropsToValues({name, email, pw}){
+    mapPropsToValues({username, password}){
         return{
-            name: name || "",
-            pw: pw || ""
+            username: username || "",
+            password: password || ""
         }
     },
     validationSchema: Yup.object().shape({
-        name: Yup.string().required("Required field."),
-        pw: Yup.string().required("Required field."),
+        username: Yup.string().required("Required field."),
+        password: Yup.string().required("Required field."),
     }),
 
     handleSubmit(values, props) {
-        axios.post("https://lambda-practice-db.herokuapp.com/api/auth/login", values)
+        axios.post("https://potluck-planner-backend.herokuapp.com/api/login", values)
           .then(res => {
             localStorage.setItem('token', res.data.token);
             // console.log(props);

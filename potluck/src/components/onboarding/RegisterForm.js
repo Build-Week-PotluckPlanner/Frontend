@@ -4,6 +4,20 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import {BrowserRouter as Router, Link} from "react-router-dom";
 import { render } from 'react-dom';
+import styled from "styled-components"
+
+const StyledForm = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-evenly;
+`;
+
+const Button = styled.button`
+width: 100px;
+height: 25px;
+border-radius: 10px;
+margin: 2%;`;
 
 const Register = ({ errors, touched, status}) => {
   const [users, setUsers] = useState([]);
@@ -17,29 +31,32 @@ const Register = ({ errors, touched, status}) => {
       <Form>
         <h1>Registration Form</h1>
         <br></br>
-        <Field type="text" name="name" placeholder="Name" />
+        <Field type="text" name="firstName" placeholder="First Name" />
         {touched.name && errors.name && <p className="errors">{errors.name}</p>}
         <br></br>
-        <Field type="email" name="email" placeholder="Email" />
-        {touched.email && errors.email && <p className="errors">{errors.email}</p>}
+        <Field type="text" name="lastName" placeholder="Last Name" />
+        {touched.name && errors.name && <p className="errors">{errors.name}</p>}
+        <br></br>
+        <Field type="text" name="username" placeholder="Username" />
+        {touched.name && errors.name && <p className="errors">{errors.name}</p>}
         <br></br>
         <Field type="password" name="password" placeholder="Password" />
         {touched.password && errors.password && <p className="errors">{errors.password}</p>}
         <br></br>
+        <Link className="login" to = "./LoginForm">Login</Link>
+        <br></br>
+        <Button type="submit">Register</Button>
         
-        
-        <button>Submit!</button>
       </Form>
 
-     
-       
-      {/* This is where we display our post request */}
+      
       {users.map(user => (
             
             <ul key="{user.id}">
-              <li>Name: {user.name}</li>
-              <li>Email: {user.email}</li>
-              
+              <li>First Name: {user.firstName}</li>
+              <li>Last Name: {user.lastName}</li>
+              <li>Username: {user.username}</li>
+              <li>Password: {user.password}</li>
             </ul>
           ))}
     </div>
@@ -48,16 +65,18 @@ const Register = ({ errors, touched, status}) => {
 
 
 const FormikRegister = withFormik({
-  mapPropsToValues({ name, email, password }) {
+  mapPropsToValues({ firstName, lastName,username, password }) {
     return {
-      name: name || "",
-      email: email || "",
+      name: firstName || "",
+      name: lastName || "",
+      name: username || "",
       password: password || "",
     };
   },
   validationSchema: Yup.object().shape({
-    name: Yup.string().required(),
-    email: Yup.string().required(),
+    firstName: Yup.string().required(),
+    lastName: Yup.string().required(),
+    username: Yup.string().required(),
     password: Yup.string().required()
   }),
   
@@ -75,7 +94,6 @@ const FormikRegister = withFormik({
       .catch(err => console.log(err.response));
   }
 })(Register);
-
 
 export default FormikRegister;
 
