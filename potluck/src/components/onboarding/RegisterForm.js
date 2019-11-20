@@ -13,10 +13,12 @@ justify-content: space-evenly;
 `;
 
 const Button = styled.button`
-width: 100px;
-height: 25px
+width: 100px
+height: 35px
 border-radius: 10px
-margin: 2%`;
+margin: 2%
+background: green
+color: gold`;
 
 const Register = ({ errors, touched, status}) => {
   const [users, setUsers] = useState([]);
@@ -42,7 +44,7 @@ const Register = ({ errors, touched, status}) => {
         <Field type="password" name="password" placeholder="Password" />
         {touched.password && errors.password && <p className="errors">{errors.password}</p>}
         <br></br>
-        <Link className="login" to = "./LoginForm">Login</Link>
+        <Link className="register" to = "./LoginForm">Login</Link>
         <br></br>
         <Button type="submit">Register</Button>
         

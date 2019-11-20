@@ -2,6 +2,17 @@ import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import styled from "styled-components"
+
+const Button = styled.button`
+width: 100px
+height: 35px
+border-radius: 10px
+margin: 2%
+background: green
+color: gold
+box-shadow: none`;
+
 
 
 const Organizer = ({ values, errors, touched, status }) => {
@@ -41,7 +52,7 @@ const Organizer = ({ values, errors, touched, status }) => {
           <span className="checkmark" />
         </label>
         <Field as="textarea" type="text" name="notes" placeholder="what will be brought" />
-        <button>Submit!</button>
+        <Button>Submit!</Button>
       </Form>
       {person.map(person => (
         <ul key={person.id}>
@@ -69,8 +80,8 @@ const FormikOraginzer = withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    name: Yup.string().required(),
-    date: Yup.string().required()
+    name: Yup.string().required("Required Field"),
+    date: Yup.string().required("Required Field")
   }),
   handleSubmit(values, { setStatus }) {
     // values is our object with all our data on it

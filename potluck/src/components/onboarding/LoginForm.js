@@ -15,9 +15,11 @@ justify-content: space-evenly
 
 const Button = styled.button`
 width: 100px
-height: 25px
+height: 35px
 border-radius: 10px
-margin: 2%`;
+margin: 2%
+background: green
+color: gold`;
 
 
 
