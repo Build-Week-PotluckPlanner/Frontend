@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import {BrowserRouter as Router, Link} from "react-router-dom";
 import { render } from 'react-dom';
-import styled from "styled-components"
+import styled from "styled-components";
 
 const StyledForm = styled.div`
 display: flex;

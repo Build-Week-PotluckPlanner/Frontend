@@ -28,7 +28,8 @@ const NavBar = () => {
                     <img src="https://build-week-potluckplanner.github.io/img/logo.png"></img>
                 </div>
                 <Navigation>
-                    <Link className="links" to = "/">Home</Link>
+                    <a className="links" href="https://build-week-potluckplanner.github.io/">Marketing</a>
+                    <Link className="links" to = "/">Dashboard</Link>
                     <Link className="links" to = "/about">About Us</Link>
                     <Link className="links" to = "/LoginForm">Login</Link>
                     <Link className="links" to = "/RegisterForm">Register</Link>
@@ -36,5 +37,4 @@ const NavBar = () => {
             </StyledForm>
     )
 }
-
 export default NavBar

@@ -4,8 +4,9 @@ import LoginForm from './components/onboarding/LoginForm';
 import { BrowserRouter as Router, Route, Redirect} from "react-router-dom"
 import NavBar from "./components/onboarding/Nav"
 import FormikLogin from './components/onboarding/LoginForm'
-
 import RegisterForm from './components/onboarding/RegisterForm';
+
+import FormikOrganizer from './components/onboarding/Organizer';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
   return <Route {...rest} render={props => {
@@ -24,7 +25,7 @@ function App() {
       <NavBar/>
       {/* <header className="App-header"> */}
       <PrivateRoute path="/" exact component={FormikLogin} />
-      {/* <PrivateRoute path='/dashboard' component={DashBoard} */}
+      <PrivateRoute path='/dashboard' component={FormikOrganizer} />
       <Route path='/LoginForm' component={LoginForm} />
       <Route path='/RegisterForm' component={RegisterForm} />
       {/* </header> */}
