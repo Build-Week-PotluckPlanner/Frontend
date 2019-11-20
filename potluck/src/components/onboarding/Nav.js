@@ -7,6 +7,7 @@ display:flex;
 flex-direction: row;
 justify-content: space-evenly;
 background: lightyellow;
+border-bottom 2px #282c34 solid;
 `;
 
 const Navigation = styled.div`
