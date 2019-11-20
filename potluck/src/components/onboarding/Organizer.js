@@ -26,9 +26,9 @@ const Organizer = ({ values, errors, touched, status }) => {
         {touched.location && errors.location && <p className="errors">{errors.location}</p>}
         <Field as="select" className="food-select" name="item">
           <option>Please Choose an Option</option>
-          <option value="entree">Entree</option>
-          <option value="beverage">Beverage</option>
-          <option value="desert">Desert</option>
+          <option value="Entree">Entree</option>
+          <option value="Beverage">Beverage</option>
+          <option value="Desert">Desert</option>
         </Field>
         <label className="checkbox-container">
           <h3>RSVP</h3>

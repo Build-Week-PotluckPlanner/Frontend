@@ -12,7 +12,7 @@ background: lightyellow;
 const Navigation = styled.div`
 display:flex;
 justify-content: space-evenly;
-width: 25%;
+width: 45%;
 align-items: center;
 text-decoration: none;`;
 
@@ -28,7 +28,8 @@ const NavBar = () => {
                     <img src="https://build-week-potluckplanner.github.io/img/logo.png"></img>
                 </div>
                 <Navigation>
-                    <Link className="links" to = "/">Home</Link>
+                    <a className="links" href="https://build-week-potluckplanner.github.io/">Marketing</a>
+                    <Link className="links" to = "/">Dashboard</Link>
                     <Link className="links" to = "/about">About Us</Link>
                     <Link className="links" to = "/LoginForm">Login</Link>
                     <Link className="links" to = "/RegisterForm">Register</Link>
