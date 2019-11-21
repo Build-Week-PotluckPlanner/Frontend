@@ -1,22 +1,34 @@
 import React from 'react';
 import './App.css';
-import FormikLogin from './components/onboarding/LoginForm';
-import {Route} from "react-router-dom"
+import LoginForm from './components/onboarding/LoginForm';
+import { BrowserRouter as Router, Route, Redirect} from "react-router-dom"
 import NavBar from "./components/onboarding/Nav"
-import FormikOraginzer from './components/onboarding/Organizer';
-import FormikRegister from './components/onboarding/RegisterForm';
+import FormikLogin from './components/onboarding/LoginForm'
+import RegisterForm from './components/onboarding/RegisterForm';
+
+import FormikOrganizer from './components/onboarding/Organizer';
+
+const PrivateRoute = ({component: Component, ...rest}) => {
+  return <Route {...rest} render={props => {
+    if (localStorage.getItem('token')) {
+      return <Component {...props} />;
+    } else {
+      return <Redirect to="/login" />;
+    }
+  }} />;
+};
 
 function App() {
   return (
     <div className="App">
 
       <NavBar/>
-      <header className="App-header">
-      <Route path="/" exact component={FormikOraginzer}/>
-      <Route path="/LoginForm" exact component={FormikLogin} />
-      <Route path="/RegisterForm" exact component={FormikRegister} />
-      </header>
-
+      {/* <header className="App-header"> */}
+      <PrivateRoute path="/" exact component={FormikLogin} />
+      <PrivateRoute path='/dashboard' component={FormikOrganizer} />
+      <Route path='/LoginForm' component={LoginForm} />
+      <Route path='/RegisterForm' component={RegisterForm} />
+      {/* </header> */}
 
 
     </div>
