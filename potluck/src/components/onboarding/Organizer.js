@@ -61,16 +61,18 @@ const FormikOrganizer = withFormik({
       name: name || "",
       date: date || "",
       time: time || "",
-      location: location || "",
+      location: "",
       item: item || "",
       rsvp: rsvp || false,
       notes: notes || ""
     };
   },
+
   validationSchema: Yup.object().shape({
     name: Yup.string().required(),
     date: Yup.string().required()
   }),
+
   handleSubmit(values, { setStatus }) {
     // values is our object with all our data on it
     axios
