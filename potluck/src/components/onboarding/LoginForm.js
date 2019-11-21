@@ -93,7 +93,6 @@ const FormikLogin = withFormik({
             // console.log('Here', res.data);
         //   setStatus(res.data);
         })
-        
         .catch(err => console.log(err.response));
     }
 //   handleSubmit(values, {resetForm, setErrors, setSubmitting}) {
