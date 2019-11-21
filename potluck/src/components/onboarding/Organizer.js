@@ -73,7 +73,7 @@ const FormikOraginzer = withFormik({
       name: name || "",
       date: date || "",
       time: time || "",
-      location: "",
+      location:  "",
       item: item || "",
       rsvp: rsvp || false,
       notes: notes || ""
