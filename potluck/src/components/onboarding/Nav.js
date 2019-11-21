@@ -30,8 +30,7 @@ const NavBar = () => {
                 </div>
                 <Navigation>
                     <a className="links" href="https://build-week-potluckplanner.github.io/">Marketing</a>
-                    <Link className="links" to = "/">Dashboard</Link>
-                    <Link className="links" to = "/about">About Us</Link>
+                    <a href="https://build-week-potluckplanner.github.io/about.html">About us</a>
                     <Link className="links" to = "/LoginForm">Login</Link>
                     <Link className="links" to = "/RegisterForm">Register</Link>
                 </Navigation>

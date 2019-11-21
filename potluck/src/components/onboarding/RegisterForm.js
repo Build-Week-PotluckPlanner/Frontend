@@ -31,26 +31,26 @@ const Register = ({ errors, touched, status}) => {
   return (
     <div>
       <Form>
-        <h1>Registration Form</h1>
-        <br></br>
-        <Field type="text" name="firstName" placeholder="First Name" />
-        {touched.name && errors.name && <p className="errors">{errors.name}</p>}
-        <br></br>
-        <Field type="text" name="lastName" placeholder="Last Name" />
-        {touched.name && errors.name && <p className="errors">{errors.name}</p>}
-        <br></br>
-        <Field type="text" name="username" placeholder="Username" />
-        {touched.name && errors.name && <p className="errors">{errors.name}</p>}
-        <br></br>
-        <Field type="password" name="password" placeholder="Password" />
-        {touched.password && errors.password && <p className="errors">{errors.password}</p>}
-        <br></br>
-        <Link className="register" to = "./LoginForm">Login</Link>
-        <br></br>
-        <button type="submit">Register</button>
-        
+        <StyledForm>
+          <h1>Registration Form</h1>
+          <br></br>
+          <Field type="text" name="firstName" placeholder="First Name" />
+          {touched.name && errors.name && <p className="errors">{errors.name}</p>}
+          <br></br>
+          <Field type="text" name="lastName" placeholder="Last Name" />
+          {touched.name && errors.name && <p className="errors">{errors.name}</p>}
+          <br></br>
+          <Field type="text" name="username" placeholder="Username" />
+          {touched.name && errors.name && <p className="errors">{errors.name}</p>}
+          <br></br>
+          <Field type="password" name="password" placeholder="Password" />
+          {touched.password && errors.password && <p className="errors">{errors.password}</p>}
+          <br></br>
+          <Link className="register" to = "./LoginForm">Login</Link>
+          <br></br>
+          <Button type="submit">Register</Button>
+        </StyledForm>
       </Form>
-
       
       {users.map(user => (
             
