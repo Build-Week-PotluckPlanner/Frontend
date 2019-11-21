@@ -1,17 +1,17 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect} from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import styled from "styled-components"
-import {Link} from "react-router-dom"
-
+import styled from "styled-components";
+import {BrowserRouter as Router, Link} from "react-router-dom";
+import { render } from 'react-dom';
 
 const StyledForm = styled.div`
-display: flex
-flex-direction: column
-align-items: center
-justify-content: space-evenly
-`;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-evenly;
+`
 
 const Button = styled.button`
 width: 100px
@@ -49,11 +49,11 @@ const Login = ({values, errors, touched, status}) => {
             <Form>
                 <StyledForm>
                     <label className="userinfo">Username
-                    <Field type="text" name="name" placeholder="insert username"/>
+                    <Field type="text" name="username" placeholder="insert username"/>
                     {touched.name && errors.name && (<p className="error">{errors.name}</p>)}
                     </label>
                     <label className="userinfo">Password
-                    <Field type="text" name="pw" placeholder="insert password"/>
+                    <Field type="text" name="password" placeholder="insert password"/>
                     {touched.pw && errors.pw && (<p className="error">{errors.pw}</p>)}
                     </label>
                     <Link className="register" to = "./RegisterForm">Register</Link>
@@ -63,8 +63,8 @@ const Login = ({values, errors, touched, status}) => {
 
             {user.map(person => (
                 <ul key={person.id}>
-                    <li>Name: {person.name}</li>
-                    <li>Password: {person.pw}</li>
+                    <li>Username: {person.username}</li>
+                    <li>Password: {person.password}</li>
                 </ul>
             ))}
 
@@ -75,31 +75,33 @@ const Login = ({values, errors, touched, status}) => {
 }
 
 const FormikLogin = withFormik({
-    mapPropsToValues({name, email, pw}){
+    mapPropsToValues({username, password}){
         return{
-            name: name || "",
-            pw: pw || ""
+            username: username || "",
+            password: password || ""
         }
     },
     validationSchema: Yup.object().shape({
-        name: Yup.string().required("Required field."),
-        pw: Yup.string().required("Required field."),
+        username: Yup.string().required("Required field."),
+        password: Yup.string().required("Required field."),
     }),
-    handleSubmit(values, { setStatus }) {
-        axios
-            .post("https://potluck-planner-backend.herokuapp.com/api/login", values)
-            .then(response => {
-                console.log(response);
-                const token = response.data.token;
-                localStorage.setItem("token", token)
-                values.history.push("/dashboard")
-                setStatus(response.data);
-            })
-            .catch(error => console.log(error.response));
+
+    handleSubmit(values, props) {
+        axios.post("https://potluck-planner-backend.herokuapp.com/api/login", values)
+          .then(res => {
+            localStorage.setItem('token', res.data.token);
+            // console.log(props);
+            props.props.history.push('/dashboard');
+            // console.log('Here', res.data);
+        //   setStatus(res.data);
+        })
+        
+        .catch(err => console.log(err.response));
     }
+//   handleSubmit(values, {resetForm, setErrors, setSubmitting}) {
+//   }
 })(Login);
 
-
-
-
 export default FormikLogin
+
+render(<Router><FormikLogin /></Router>, document.getElementById('root') )

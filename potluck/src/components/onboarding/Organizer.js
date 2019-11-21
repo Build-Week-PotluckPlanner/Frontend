@@ -67,7 +67,7 @@ const Organizer = ({ values, errors, touched, status }) => {
     </div>
   );
 };
-const FormikOraginzer = withFormik({
+const FormikOrganizer = withFormik({
   mapPropsToValues({ name, date, time, location, item, rsvp, notes }) {
     return {
       name: name || "",
@@ -79,10 +79,12 @@ const FormikOraginzer = withFormik({
       notes: notes || ""
     };
   },
+
   validationSchema: Yup.object().shape({
     name: Yup.string().required("Required Field"),
     date: Yup.string().required("Required Field")
   }),
+
   handleSubmit(values, { setStatus }) {
     // values is our object with all our data on it
     axios
@@ -94,4 +96,8 @@ const FormikOraginzer = withFormik({
       .catch(err => console.log(err.response));
   }
 })(Organizer);
-export default FormikOraginzer
+
+
+export default FormikOrganizer
+
+// render(<Router><FormikOrganizer /></Router>, document.getElementById('root'))

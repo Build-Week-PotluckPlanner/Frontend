@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import styled from "styled-components"
-import {Link} from "react-router-dom"
+import { render } from 'react-dom';
+import styled from "styled-components";
+import { BrowserRouter as Router, Link } from 'react-router-dom'; 
 
 const StyledForm = styled.div`
 display: flex;
@@ -46,7 +47,7 @@ const Register = ({ errors, touched, status}) => {
         <br></br>
         <Link className="register" to = "./LoginForm">Login</Link>
         <br></br>
-        <Button type="submit">Register</Button>
+        <button type="submit">Register</button>
         
       </Form>
 
@@ -58,7 +59,6 @@ const Register = ({ errors, touched, status}) => {
               <li>Last Name: {user.lastName}</li>
               <li>Username: {user.username}</li>
               <li>Password: {user.password}</li>
-              
             </ul>
           ))}
     </div>
@@ -67,11 +67,11 @@ const Register = ({ errors, touched, status}) => {
 
 
 const FormikRegister = withFormik({
-  mapPropsToValues({ firstName, lastName,username, password }) {
+  mapPropsToValues({ firstName, lastName, username, password }) {
     return {
-      name: firstName || "",
-      name: lastName || "",
-      name: username || "",
+      firstName: firstName || "",
+      lastName: lastName || "",
+      username: username || "",
       password: password || "",
     };
   },
@@ -81,18 +81,22 @@ const FormikRegister = withFormik({
     username: Yup.string().required(),
     password: Yup.string().required()
   }),
-  handleSubmit(values, { setStatus }) {
+  
+  handleSubmit(values, props) {
+    // values is our object with all our data on it
     axios
-      .post("https://reqres.in/api/users/", values)
+      .post("https://potluck-planner-backend.herokuapp.com/api/register", values)
       .then(res => {
-        setStatus(res.data);
-        console.log(res);
+            console.log('Here', res.data);
+            localStorage.setItem('token', res.data.token)
+            // console.log(props.props.history);
+            props.props.history.push('/loginform')
+            // setStatus(res.data);
       })
       .catch(err => console.log(err.response));
   }
 })(Register);
 
-
 export default FormikRegister;
 
-
+render(<Router><FormikRegister /></Router>, document.getElementById('root') )

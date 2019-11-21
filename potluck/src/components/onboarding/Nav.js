@@ -38,5 +38,4 @@ const NavBar = () => {
             </StyledForm>
     )
 }
-
 export default NavBar
