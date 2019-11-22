@@ -86,7 +86,8 @@ const FormikLogin = withFormik({
 
     handleSubmit(values, props) {
         axios.post("https://potluck-planner-backend.herokuapp.com/api/login", values)
-          .then(res => {
+            .then(res => {
+            console.log(res.data)
             localStorage.setItem('token', res.data.token);
             // console.log(props);
             props.props.history.push('/dashboard');
