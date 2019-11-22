@@ -3,7 +3,8 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import styled from "styled-components"
-
+import { Link } from 'react-router-dom';
+import axiosWithAuth from '../../utilities/AxiosWithAuth';
 const Button = styled.button`
 width: 100px
 height: 35px
@@ -14,8 +15,7 @@ color: gold
 box-shadow: none`;
 
 
-import { Link } from 'react-router-dom';
-import axiosWithAuth from '../../utilities/AxiosWithAuth';
+
 
 
 const Organizer = ({ values, errors, touched, status }) => {
