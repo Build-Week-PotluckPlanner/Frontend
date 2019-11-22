@@ -1,0 +1,16 @@
+
+
+.Cards {
+    background-color: green;
+    color: yellow;
+    border-radius: 12px;
+    width: 30%;
+    height: 40%;
+    margin: 2% 0%;
+    
+  }
+  .Cards:last-child {
+    margin: 2% 0% 2% 0%;
+  }
+
+  

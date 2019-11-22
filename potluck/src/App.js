@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Redirect} from "react-router-dom"
 import NavBar from "./components/onboarding/Nav"
 import FormikLogin from './components/onboarding/LoginForm'
 import RegisterForm from './components/onboarding/RegisterForm';
+import EditForm from './components/onboarding/EditForm';
+import PotluckData from './components/onboarding/PotluckData';
 import FormikOrganizer from './components/onboarding/Organizer';
 // import UsersPotLucks from './components/onboarding/UsersPotLucks';
 
@@ -31,6 +33,13 @@ function App() {
       {/* <Route path='/UsersPotLucks' component={UsersPotLucks}/> */}
       {/* </header> */}
 
+
+      {/* <Route path='/EditForm' component={EditForm} /> */}
+      <PrivateRoute path='/editform/:id' component={EditForm} />
+
+      <Route path='/PotluckData' component={PotluckData} />
+
+      {/* </header> */}
 
     </div>
   );
