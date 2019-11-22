@@ -8,10 +8,18 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 const StyledForm = styled.div`
 display: flex;
-width: 100px;
-height: 25px;
-border-radius: 10px;
-margin: 2%;`;
+flex-direction: column;
+align-items: center;
+justify-content: space-evenly;
+`;
+
+const Button = styled.button`
+width: 100px
+height: 35px
+border-radius: 10px
+margin: 2%
+background: green
+color: gold`;
 
 const Register = ({ errors, touched, status}) => {
   const [users, setUsers] = useState([]);
@@ -23,26 +31,26 @@ const Register = ({ errors, touched, status}) => {
   return (
     <div>
       <Form>
-        <h1>Registration Form</h1>
-        <br></br>
-        <Field type="text" name="firstName" placeholder="First Name" />
-        {touched.name && errors.name && <p className="errors">{errors.name}</p>}
-        <br></br>
-        <Field type="text" name="lastName" placeholder="Last Name" />
-        {touched.name && errors.name && <p className="errors">{errors.name}</p>}
-        <br></br>
-        <Field type="text" name="username" placeholder="Username" />
-        {touched.name && errors.name && <p className="errors">{errors.name}</p>}
-        <br></br>
-        <Field type="password" name="password" placeholder="Password" />
-        {touched.password && errors.password && <p className="errors">{errors.password}</p>}
-        <br></br>
-        <Link className="login" to = "./LoginForm">Login</Link>
-        <br></br>
-        <button type="submit">Register</button>
-        
+        <StyledForm>
+          <h1>Registration Form</h1>
+          <br></br>
+          <Field type="text" name="firstName" placeholder="First Name" />
+          {touched.name && errors.name && <p className="errors">{errors.name}</p>}
+          <br></br>
+          <Field type="text" name="lastName" placeholder="Last Name" />
+          {touched.name && errors.name && <p className="errors">{errors.name}</p>}
+          <br></br>
+          <Field type="text" name="username" placeholder="Username" />
+          {touched.name && errors.name && <p className="errors">{errors.name}</p>}
+          <br></br>
+          <Field type="password" name="password" placeholder="Password" />
+          {touched.password && errors.password && <p className="errors">{errors.password}</p>}
+          <br></br>
+          <Link className="register" to = "./LoginForm">Login</Link>
+          <br></br>
+          <Button type="submit">Register</Button>
+        </StyledForm>
       </Form>
-
       
       {users.map(user => (
             

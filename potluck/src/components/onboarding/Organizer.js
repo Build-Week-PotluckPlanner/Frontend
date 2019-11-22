@@ -2,8 +2,21 @@ import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import styled from "styled-components"
+
+const Button = styled.button`
+width: 100px
+height: 35px
+border-radius: 10px
+margin: 2%
+background: green
+color: gold
+box-shadow: none`;
+
+
 import { Link } from 'react-router-dom';
 import axiosWithAuth from '../../utilities/AxiosWithAuth';
+
 
 const Organizer = ({ values, errors, touched, status }) => {
   const [person, setPerson] = useState([]);
@@ -30,6 +43,7 @@ const Organizer = ({ values, errors, touched, status }) => {
   return (
     <div className="person-form">
         <h1>Create PotLuck</h1>
+
         <Form>
           <Field type="text" name="name" placeholder="Person Attending" />
           {touched.name && errors.name && (
@@ -65,6 +79,7 @@ const Organizer = ({ values, errors, touched, status }) => {
 
       {person.map(person => {
         return (
+
         <ul key={person.id}>
           <li>Name: {person.name}</li>
           <li>Date: {person.date}</li>
@@ -84,16 +99,19 @@ const FormikOrganizer = withFormik({
       name: name || "",
       date: date || "",
       time: time || "",
-      location: "",
-      // item: item || "",
-      // rsvp: rsvp || false,
-      // notes: notes || ""
+
+      location:  "",
+      item: item || "",
+      rsvp: rsvp || false,
+      notes: notes || ""
+
+
     };
   },
 
   validationSchema: Yup.object().shape({
-    name: Yup.string().required(),
-    date: Yup.string().required()
+    name: Yup.string().required("Required Field"),
+    date: Yup.string().required("Required Field")
   }),
 
   handleSubmit(values, { setStatus }) {

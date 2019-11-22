@@ -14,10 +14,12 @@ justify-content: space-evenly;
 `
 
 const Button = styled.button`
-width: 100px;
-height: 25px;
-border-radius: 10px;
-margin: 2%;`
+width: 100px
+height: 35px
+border-radius: 10px
+margin: 2%
+background: green
+color: gold`;
 
 
 
@@ -86,8 +88,13 @@ const FormikLogin = withFormik({
 
     handleSubmit(values, props) {
         axios.post("https://potluck-planner-backend.herokuapp.com/api/login", values)
+
+          .then(res => {
+              console.log(res.data)
+          
             .then(res => {
             console.log(res.data)
+
             localStorage.setItem('token', res.data.token);
             // console.log(props);
             props.props.history.push('/dashboard');

@@ -7,6 +7,7 @@ display:flex;
 flex-direction: row;
 justify-content: space-evenly;
 background: lightyellow;
+border-bottom 2px #282c34 solid;
 `;
 
 const Navigation = styled.div`
@@ -29,8 +30,12 @@ const NavBar = () => {
                 </div>
                 <Navigation>
                     <a className="links" href="https://build-week-potluckplanner.github.io/">Marketing</a>
+
+                    <a href="https://build-week-potluckplanner.github.io/about.html">About us</a>
+
                     <Link className="links" to = "/dashboard">Dashboard</Link>
                     <a className="links" href = "https://build-week-potluckplanner.github.io/about.html">About Us</a>
+
                     <Link className="links" to = "/LoginForm">Login</Link>
                     <Link className="links" to = "/RegisterForm">Register</Link>
                     <Link className="links" to = "/PotluckData">Potlucks</Link>
