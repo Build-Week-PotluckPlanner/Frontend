@@ -29,7 +29,8 @@ function App() {
       <PrivateRoute path='/dashboard' component={FormikOrganizer} />
       <Route path='/LoginForm' component={LoginForm} />
       <Route path='/RegisterForm' component={RegisterForm} />
-      <Route path='/EditForm' component={EditForm} />
+      {/* <Route path='/EditForm' component={EditForm} /> */}
+      <PrivateRoute path='/editform/:id' component={EditForm} />
       {/* </header> */}
 
     </div>

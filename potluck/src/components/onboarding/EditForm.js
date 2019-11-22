@@ -10,7 +10,8 @@ const EditPost = (props) => {
     }, []);
 
     const id = Number(props.match.params.id);
-
+    // console.log(props.match.params.id)
+    
     const getChange = () => {
     axiosWithAuth()
     .get('https://potluck-planner-backend.herokuapp.com/potlucks')

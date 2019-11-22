@@ -41,7 +41,7 @@ const deleteInfo = id => {
     // console.log(id);
     axiosWithAuth().delete(`https://potluck-planner-backend.herokuapp.com/potlucks/${id}`)
         .then(res => {
-            
+
         axiosWithAuth().get('https://potluck-planner-backend.herokuapp.com/potlucks')
         .then(res => {
             setInfo(res.data.posts);
@@ -55,7 +55,7 @@ const deleteInfo = id => {
 
 
 return(
-<div>
+ <div>
 
 <h2>Information</h2>
 <NewApiList submitInfo={addInfo} />
@@ -68,7 +68,7 @@ return(
     );
 })}
 
-</div>
+</div> 
 
 )};
 

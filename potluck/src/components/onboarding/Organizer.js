@@ -3,6 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import axiosWithAuth from '../../utilities/AxiosWithAuth';
 
 const Organizer = ({ values, errors, touched, status }) => {
   const [person, setPerson] = useState([]);
@@ -10,6 +11,21 @@ const Organizer = ({ values, errors, touched, status }) => {
   useEffect(() => {
     status && setPerson(person => [...person, status]);
   }, [status]);
+
+  // const deleteInfo = id => {
+  //   // console.log(id);
+  //   axiosWithAuth().delete(`https://potluck-planner-backend.herokuapp.com/potlucks/${id}`)
+  //       .then(res => {
+  //       axiosWithAuth().get('https://potluck-planner-backend.herokuapp.com/potlucks')
+  //       .then(res => {
+  //           setInfo(res.data.posts);
+  //           console.log('updating data');
+  //         })
+  //         .catch(err => console.log(err.response))
+      
+  //             })
+  //     .catch(err => console.log(err.response));
+  // }
 
   return (
     <div className="person-form">
@@ -69,9 +85,9 @@ const FormikOrganizer = withFormik({
       date: date || "",
       time: time || "",
       location: "",
-      item: item || "",
-      rsvp: rsvp || false,
-      notes: notes || ""
+      // item: item || "",
+      // rsvp: rsvp || false,
+      // notes: notes || ""
     };
   },
 
@@ -82,8 +98,8 @@ const FormikOrganizer = withFormik({
 
   handleSubmit(values, { setStatus }) {
     // values is our object with all our data on it
-    axios
-      .post("https://reqres.in/api/users/", values)
+    axiosWithAuth()
+      .post("https://potluck-planner-backend.herokuapp.com/potlucks", values)
       .then(res => {
         setStatus(res.data);
         console.log(res);
