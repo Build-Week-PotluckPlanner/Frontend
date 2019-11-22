@@ -74,7 +74,7 @@ const Organizer = ({ values, errors, touched, status }) => {
             <span className="checkmark" />
           </label>
           {/* <Field as="textarea" type="text" name="notes" placeholder="what will be brought" /> */}
-          <button>Submit!</button>
+          <Button>Submit!</Button>
         </Form>
 
       {person.map(person => {
